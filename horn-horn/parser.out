@@ -1,0 +1,254 @@
+Created by PLY version 3.7 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> clause
+Rule 1     clause -> prems IMPLIES term
+Rule 2     prems -> TRUE
+Rule 3     prems -> term
+Rule 4     prems -> prems AND prems
+Rule 5     term -> FALSE
+Rule 6     term -> TOP IN ID
+Rule 7     term -> concept IN BOTTOM
+Rule 8     term -> concept IN ID
+Rule 9     concept -> concept INTER concept
+Rule 10    concept -> ID
+
+Terminals, with rules where they appear
+
+AND                  : 4
+BOTTOM               : 7
+FALSE                : 5
+ID                   : 6 8 10
+IMPLIES              : 1
+IN                   : 6 7 8
+INTER                : 9
+TOP                  : 6
+TRUE                 : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+clause               : 0
+concept              : 7 8 9 9
+prems                : 1 4 4
+term                 : 1 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . clause
+    (1) clause -> . prems IMPLIES term
+    (2) prems -> . TRUE
+    (3) prems -> . term
+    (4) prems -> . prems AND prems
+    (5) term -> . FALSE
+    (6) term -> . TOP IN ID
+    (7) term -> . concept IN BOTTOM
+    (8) term -> . concept IN ID
+    (9) concept -> . concept INTER concept
+    (10) concept -> . ID
+
+    TRUE            shift and go to state 2
+    FALSE           shift and go to state 8
+    TOP             shift and go to state 6
+    ID              shift and go to state 4
+
+    term                           shift and go to state 1
+    concept                        shift and go to state 3
+    clause                         shift and go to state 5
+    prems                          shift and go to state 7
+
+state 1
+
+    (3) prems -> term .
+
+    IMPLIES         reduce using rule 3 (prems -> term .)
+    AND             reduce using rule 3 (prems -> term .)
+
+
+state 2
+
+    (2) prems -> TRUE .
+
+    IMPLIES         reduce using rule 2 (prems -> TRUE .)
+    AND             reduce using rule 2 (prems -> TRUE .)
+
+
+state 3
+
+    (7) term -> concept . IN BOTTOM
+    (8) term -> concept . IN ID
+    (9) concept -> concept . INTER concept
+
+    IN              shift and go to state 10
+    INTER           shift and go to state 9
+
+
+state 4
+
+    (10) concept -> ID .
+
+    IN              reduce using rule 10 (concept -> ID .)
+    INTER           reduce using rule 10 (concept -> ID .)
+
+
+state 5
+
+    (0) S' -> clause .
+
+
+
+state 6
+
+    (6) term -> TOP . IN ID
+
+    IN              shift and go to state 11
+
+
+state 7
+
+    (1) clause -> prems . IMPLIES term
+    (4) prems -> prems . AND prems
+
+    IMPLIES         shift and go to state 13
+    AND             shift and go to state 12
+
+
+state 8
+
+    (5) term -> FALSE .
+
+    IMPLIES         reduce using rule 5 (term -> FALSE .)
+    AND             reduce using rule 5 (term -> FALSE .)
+    $end            reduce using rule 5 (term -> FALSE .)
+
+
+state 9
+
+    (9) concept -> concept INTER . concept
+    (9) concept -> . concept INTER concept
+    (10) concept -> . ID
+
+    ID              shift and go to state 4
+
+    concept                        shift and go to state 14
+
+state 10
+
+    (7) term -> concept IN . BOTTOM
+    (8) term -> concept IN . ID
+
+    BOTTOM          shift and go to state 16
+    ID              shift and go to state 15
+
+
+state 11
+
+    (6) term -> TOP IN . ID
+
+    ID              shift and go to state 17
+
+
+state 12
+
+    (4) prems -> prems AND . prems
+    (2) prems -> . TRUE
+    (3) prems -> . term
+    (4) prems -> . prems AND prems
+    (5) term -> . FALSE
+    (6) term -> . TOP IN ID
+    (7) term -> . concept IN BOTTOM
+    (8) term -> . concept IN ID
+    (9) concept -> . concept INTER concept
+    (10) concept -> . ID
+
+    TRUE            shift and go to state 2
+    FALSE           shift and go to state 8
+    TOP             shift and go to state 6
+    ID              shift and go to state 4
+
+    term                           shift and go to state 1
+    concept                        shift and go to state 3
+    prems                          shift and go to state 18
+
+state 13
+
+    (1) clause -> prems IMPLIES . term
+    (5) term -> . FALSE
+    (6) term -> . TOP IN ID
+    (7) term -> . concept IN BOTTOM
+    (8) term -> . concept IN ID
+    (9) concept -> . concept INTER concept
+    (10) concept -> . ID
+
+    FALSE           shift and go to state 8
+    TOP             shift and go to state 6
+    ID              shift and go to state 4
+
+    term                           shift and go to state 19
+    concept                        shift and go to state 3
+
+state 14
+
+    (9) concept -> concept INTER concept .
+    (9) concept -> concept . INTER concept
+
+  ! shift/reduce conflict for INTER resolved as shift
+    IN              reduce using rule 9 (concept -> concept INTER concept .)
+    INTER           shift and go to state 9
+
+  ! INTER           [ reduce using rule 9 (concept -> concept INTER concept .) ]
+
+
+state 15
+
+    (8) term -> concept IN ID .
+
+    IMPLIES         reduce using rule 8 (term -> concept IN ID .)
+    AND             reduce using rule 8 (term -> concept IN ID .)
+    $end            reduce using rule 8 (term -> concept IN ID .)
+
+
+state 16
+
+    (7) term -> concept IN BOTTOM .
+
+    IMPLIES         reduce using rule 7 (term -> concept IN BOTTOM .)
+    AND             reduce using rule 7 (term -> concept IN BOTTOM .)
+    $end            reduce using rule 7 (term -> concept IN BOTTOM .)
+
+
+state 17
+
+    (6) term -> TOP IN ID .
+
+    IMPLIES         reduce using rule 6 (term -> TOP IN ID .)
+    AND             reduce using rule 6 (term -> TOP IN ID .)
+    $end            reduce using rule 6 (term -> TOP IN ID .)
+
+
+state 18
+
+    (4) prems -> prems AND prems .
+    (4) prems -> prems . AND prems
+
+  ! shift/reduce conflict for AND resolved as shift
+    IMPLIES         reduce using rule 4 (prems -> prems AND prems .)
+    AND             shift and go to state 12
+
+  ! AND             [ reduce using rule 4 (prems -> prems AND prems .) ]
+
+
+state 19
+
+    (1) clause -> prems IMPLIES term .
+
+    $end            reduce using rule 1 (clause -> prems IMPLIES term .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for INTER in state 14 resolved as shift
+WARNING: shift/reduce conflict for AND in state 18 resolved as shift

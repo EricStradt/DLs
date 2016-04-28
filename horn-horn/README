@@ -1,0 +1,10 @@
+
+
+
+Example usage :
+
+python3 hh.py help
+python3 hh.py generate test.clauses 10
+python3 hh.py solve test.clauses verbose
+
+
