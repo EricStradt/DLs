@@ -78,17 +78,17 @@ def t_eof(t):
     return None
 
 # Build the lexer
-lexer = lex.lex()
+OWL_LEXER = lex.lex()
 
 
 if __name__ == "__main__":
     # testing
-    lexer.input("SubClassOf(:Aminoglycoside :Antimicrobial)")
+    OWL_LEXER.input("SubClassOf(:Aminoglycoside :Antimicrobial)")
     # any new call to .input() will cause the lexer to forget the previous...
     # Tokenize
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break      # No more input
-        print(tok)
+    # while True:
+    #     tok = lexer.token()
+    #     if not tok:
+    #         break      # No more input
+    #     print(tok)
         # print(tok.lineno)

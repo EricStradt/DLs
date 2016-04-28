@@ -19,9 +19,9 @@ this webpage : http://www.dabeaz.com/ply/ply.html#ply_nn23
 import ply.yacc as yacc
 
 try:
-    from owllexer import tokens
+    from owllexer import tokens, OWL_LEXER
 except ImportError as e:
-    from parsers.owllexer import tokens
+    from parsers.owl.owllexer import tokens, OWL_LEXER
 
 
 def reverse_parser(line):
@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
     # TODO : add proper tests
     for t in tests:
-        print(OWL_PARSER.parse(t))
+        print(OWL_PARSER.parse(t, lexer=OWL_LEXER))
     # result = OWL_PARSER.parse('')
     # print(result)
     # result = OWL_par

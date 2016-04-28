@@ -10,10 +10,10 @@ The normalization process reduces all GCIs / RIs to simple ones.
 
 """
 
-
-INC_CAR = ","
-EXST_CAR = "."
-NEW_CAR = ":"
+#
+# INC_CAR = ","
+# EXST_CAR = "."
+NEW_CAR = "Z"
 
 
 def _is_simple(c):
@@ -23,16 +23,16 @@ def _is_simple(c):
         return True
     return False
 
-
-def _to_exst_concept(r, c):
-    return r + EXST_CAR + c
-
-def _exst_concept_to_rc(c):
-    if EXST_CAR not in c:
-        return None
-    else:
-        t = c.split(EXST_CAR)
-        return t[0], t[1]
+#
+# def _to_exst_concept(r, c):
+#     return r + EXST_CAR + c
+#
+# def _exst_concept_to_rc(c):
+#     if EXST_CAR not in c:
+#         return None
+#     else:
+#         t = c.split(EXST_CAR)
+#         return t[0], t[1]
 
 def simplify(l, new_concept_name, new_role_name):
     """
@@ -43,8 +43,8 @@ def simplify(l, new_concept_name, new_role_name):
     ["IN", ["INTER", C1, C2], C3]
     ["IN", C3, ["INTER", C1, C2]]
 
-    Where the Ci are names.
-    Simple existential quantified concepts are already replaced by new names.
+    Where the Ci are simple concepts.
+    # Simple existential quantified concepts are already replaced by new names.
 
     All RIs are :
     ["RIN", ["RCOMP", r1, r2], r3]
@@ -66,9 +66,9 @@ def simplify(l, new_concept_name, new_role_name):
                 elif not _is_simple(c12):
                     return False, [  ["IN", c12, new_concept_name], ["IN", ["INTER", c11, new_concept_name], c2] ]
                 if _is_simple(c2):
-                    nc11 = _to_exst_concept(c11[1], c11[2]) if type(c11) != str and c11[0] == "EXISTS" else c11
-                    nc12 = _to_exst_concept(c12[1], c12[2]) if type(c12) != str and c12[0] == "EXISTS" else c12
-                    return True, [ ["IN", ["INTER", nc11, nc12], c2] ]
+                    # nc11 = _to_exst_concept(c11[1], c11[2]) if type(c11) != str and c11[0] == "EXISTS" else c11
+                    # nc12 = _to_exst_concept(c12[1], c12[2]) if type(c12) != str and c12[0] == "EXISTS" else c12
+                    return True, [ ["IN", ["INTER", c11, c12], c2] ]
             # complex existential quantification
             elif c1[0] == "EXISTS":
                 r = c1[1]
@@ -83,9 +83,9 @@ def simplify(l, new_concept_name, new_role_name):
                 r = c2[1]
                 c21 = c2[2]
                 return False, [  ["IN", c1, ["EXISTS", r, new_concept_name]], ["IN", new_concept_name, c21] ]
-        nc1 = _to_exst_concept(c1[1], c1[2]) if type(c1) != str and c1[0] == "EXISTS" else c1
-        nc2 = _to_exst_concept(c2[1], c2[2]) if type(c2) != str and c2[0] == "EXISTS" else c2
-        return True, [ ["IN", nc1, nc2] ]
+        # nc1 = _to_exst_concept(c1[1], c1[2]) if type(c1) != str and c1[0] == "EXISTS" else c1
+        # nc2 = _to_exst_concept(c2[1], c2[2]) if type(c2) != str and c2[0] == "EXISTS" else c2
+        return True, [ ["IN", c1, c2] ]
     if l[0] == "RIN":
         r1 = l[1]
         r2 = l[2]

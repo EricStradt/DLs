@@ -20,16 +20,20 @@ owl_parse(fname)
 """
 
 try:
-    import elparser
-    import owlparser
+    import el.elparser as elparser
+    import el.ellexer as ellexer
+    import owl.owlparser as owlparser
+    import owl.owllexer as owllexer
 except ImportError as e:
-    import parsers.elparser as elparser
-    import parsers.owlparser as owlparser
+    import parsers.el.elparser as elparser
+    import parsers.el.ellexer as ellexer
+    import parsers.owl.owlparser as owlparser
+    import parsers.owl.owllexer as owllexer
 
-# characters to remove 
+# characters to remove
 _DISMISS = "-"
 
-def _parse(filename, parser):
+def _parse(filename, parser, lexer):
     """
     @brief Parses a file.
 
@@ -47,7 +51,7 @@ def _parse(filename, parser):
                 tmpl = l
                 for c in _DISMISS:
                     tmpl = tmpl.replace(c, '')
-                tmp = parser.parse(tmpl)
+                tmp = parser.parse(tmpl, lexer=lexer)
                 if tmp is not None:
                     yield tmp
 
@@ -62,13 +66,13 @@ def _unparse(filename, rev_parser, lines):
             f.write(rev_parser(l) + "\n")
 
 def el_parse(filename):
-    return _parse(filename, elparser.EL_PARSER)
+    return _parse(filename, elparser.EL_PARSER, ellexer.EL_LEXER)
 
 def el_write(filename, lines):
     _unparse(filename, elparser.reverse_parser, lines)
 
 def owl_parse(filename):
-    return _parse(filename, owlparser.OWL_PARSER)
+    return _parse(filename, owlparser.OWL_PARSER, owllexer.OWL_LEXER)
 
 def owl_write(filename, lines):
     _unparse(filename, owlparser.reverse_parser, lines)

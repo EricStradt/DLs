@@ -1,0 +1,770 @@
+Created by PLY version 3.7 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> Declaration LPAREN expression RPAREN
+Rule 2     expression -> Class LPAREN ID RPAREN
+Rule 3     expression -> ObjectProperty LPAREN ID RPAREN
+Rule 4     expression -> FunctionalObjectProperty LPAREN ID RPAREN
+Rule 5     expression -> TransitiveObjectProperty LPAREN ID RPAREN
+Rule 6     expression -> EquivalentClasses LPAREN expression expression RPAREN
+Rule 7     expression -> SubObjectPropertyOf LPAREN expression expression RPAREN
+Rule 8     expression -> ObjectIntersectionOf LPAREN expression expression RPAREN
+Rule 9     expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN
+Rule 10    expression -> SubClassOf LPAREN expression expression RPAREN
+Rule 11    expression -> ID
+
+Terminals, with rules where they appear
+
+Class                : 2
+Declaration          : 1
+EquivalentClasses    : 6
+FunctionalObjectProperty : 4
+ID                   : 2 3 4 5 11
+LPAREN               : 1 2 3 4 5 6 7 8 9 10
+ObjectIntersectionOf : 8
+ObjectProperty       : 3
+ObjectSomeValuesFrom : 9
+RPAREN               : 1 2 3 4 5 6 7 8 9 10
+SubClassOf           : 10
+SubObjectPropertyOf  : 7
+TransitiveObjectProperty : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 6 6 7 7 8 8 9 9 10 10 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 2
+
+state 1
+
+    (9) expression -> ObjectSomeValuesFrom . LPAREN expression expression RPAREN
+
+    LPAREN          shift and go to state 13
+
+
+state 2
+
+    (0) S' -> expression .
+
+
+
+state 3
+
+    (6) expression -> EquivalentClasses . LPAREN expression expression RPAREN
+
+    LPAREN          shift and go to state 14
+
+
+state 4
+
+    (10) expression -> SubClassOf . LPAREN expression expression RPAREN
+
+    LPAREN          shift and go to state 15
+
+
+state 5
+
+    (8) expression -> ObjectIntersectionOf . LPAREN expression expression RPAREN
+
+    LPAREN          shift and go to state 16
+
+
+state 6
+
+    (7) expression -> SubObjectPropertyOf . LPAREN expression expression RPAREN
+
+    LPAREN          shift and go to state 17
+
+
+state 7
+
+    (11) expression -> ID .
+
+    RPAREN          reduce using rule 11 (expression -> ID .)
+    Declaration     reduce using rule 11 (expression -> ID .)
+    Class           reduce using rule 11 (expression -> ID .)
+    ObjectProperty  reduce using rule 11 (expression -> ID .)
+    FunctionalObjectProperty reduce using rule 11 (expression -> ID .)
+    TransitiveObjectProperty reduce using rule 11 (expression -> ID .)
+    EquivalentClasses reduce using rule 11 (expression -> ID .)
+    SubObjectPropertyOf reduce using rule 11 (expression -> ID .)
+    ObjectIntersectionOf reduce using rule 11 (expression -> ID .)
+    ObjectSomeValuesFrom reduce using rule 11 (expression -> ID .)
+    SubClassOf      reduce using rule 11 (expression -> ID .)
+    ID              reduce using rule 11 (expression -> ID .)
+    $end            reduce using rule 11 (expression -> ID .)
+
+
+state 8
+
+    (5) expression -> TransitiveObjectProperty . LPAREN ID RPAREN
+
+    LPAREN          shift and go to state 18
+
+
+state 9
+
+    (3) expression -> ObjectProperty . LPAREN ID RPAREN
+
+    LPAREN          shift and go to state 19
+
+
+state 10
+
+    (2) expression -> Class . LPAREN ID RPAREN
+
+    LPAREN          shift and go to state 20
+
+
+state 11
+
+    (4) expression -> FunctionalObjectProperty . LPAREN ID RPAREN
+
+    LPAREN          shift and go to state 21
+
+
+state 12
+
+    (1) expression -> Declaration . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 22
+
+
+state 13
+
+    (9) expression -> ObjectSomeValuesFrom LPAREN . expression expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 23
+
+state 14
+
+    (6) expression -> EquivalentClasses LPAREN . expression expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 24
+
+state 15
+
+    (10) expression -> SubClassOf LPAREN . expression expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 25
+
+state 16
+
+    (8) expression -> ObjectIntersectionOf LPAREN . expression expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 26
+
+state 17
+
+    (7) expression -> SubObjectPropertyOf LPAREN . expression expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 27
+
+state 18
+
+    (5) expression -> TransitiveObjectProperty LPAREN . ID RPAREN
+
+    ID              shift and go to state 28
+
+
+state 19
+
+    (3) expression -> ObjectProperty LPAREN . ID RPAREN
+
+    ID              shift and go to state 29
+
+
+state 20
+
+    (2) expression -> Class LPAREN . ID RPAREN
+
+    ID              shift and go to state 30
+
+
+state 21
+
+    (4) expression -> FunctionalObjectProperty LPAREN . ID RPAREN
+
+    ID              shift and go to state 31
+
+
+state 22
+
+    (1) expression -> Declaration LPAREN . expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 32
+
+state 23
+
+    (9) expression -> ObjectSomeValuesFrom LPAREN expression . expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 33
+
+state 24
+
+    (6) expression -> EquivalentClasses LPAREN expression . expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 34
+
+state 25
+
+    (10) expression -> SubClassOf LPAREN expression . expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 35
+
+state 26
+
+    (8) expression -> ObjectIntersectionOf LPAREN expression . expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 36
+
+state 27
+
+    (7) expression -> SubObjectPropertyOf LPAREN expression . expression RPAREN
+    (1) expression -> . Declaration LPAREN expression RPAREN
+    (2) expression -> . Class LPAREN ID RPAREN
+    (3) expression -> . ObjectProperty LPAREN ID RPAREN
+    (4) expression -> . FunctionalObjectProperty LPAREN ID RPAREN
+    (5) expression -> . TransitiveObjectProperty LPAREN ID RPAREN
+    (6) expression -> . EquivalentClasses LPAREN expression expression RPAREN
+    (7) expression -> . SubObjectPropertyOf LPAREN expression expression RPAREN
+    (8) expression -> . ObjectIntersectionOf LPAREN expression expression RPAREN
+    (9) expression -> . ObjectSomeValuesFrom LPAREN expression expression RPAREN
+    (10) expression -> . SubClassOf LPAREN expression expression RPAREN
+    (11) expression -> . ID
+
+    Declaration     shift and go to state 12
+    Class           shift and go to state 10
+    ObjectProperty  shift and go to state 9
+    FunctionalObjectProperty shift and go to state 11
+    TransitiveObjectProperty shift and go to state 8
+    EquivalentClasses shift and go to state 3
+    SubObjectPropertyOf shift and go to state 6
+    ObjectIntersectionOf shift and go to state 5
+    ObjectSomeValuesFrom shift and go to state 1
+    SubClassOf      shift and go to state 4
+    ID              shift and go to state 7
+
+    expression                     shift and go to state 37
+
+state 28
+
+    (5) expression -> TransitiveObjectProperty LPAREN ID . RPAREN
+
+    RPAREN          shift and go to state 38
+
+
+state 29
+
+    (3) expression -> ObjectProperty LPAREN ID . RPAREN
+
+    RPAREN          shift and go to state 39
+
+
+state 30
+
+    (2) expression -> Class LPAREN ID . RPAREN
+
+    RPAREN          shift and go to state 40
+
+
+state 31
+
+    (4) expression -> FunctionalObjectProperty LPAREN ID . RPAREN
+
+    RPAREN          shift and go to state 41
+
+
+state 32
+
+    (1) expression -> Declaration LPAREN expression . RPAREN
+
+    RPAREN          shift and go to state 42
+
+
+state 33
+
+    (9) expression -> ObjectSomeValuesFrom LPAREN expression expression . RPAREN
+
+    RPAREN          shift and go to state 43
+
+
+state 34
+
+    (6) expression -> EquivalentClasses LPAREN expression expression . RPAREN
+
+    RPAREN          shift and go to state 44
+
+
+state 35
+
+    (10) expression -> SubClassOf LPAREN expression expression . RPAREN
+
+    RPAREN          shift and go to state 45
+
+
+state 36
+
+    (8) expression -> ObjectIntersectionOf LPAREN expression expression . RPAREN
+
+    RPAREN          shift and go to state 46
+
+
+state 37
+
+    (7) expression -> SubObjectPropertyOf LPAREN expression expression . RPAREN
+
+    RPAREN          shift and go to state 47
+
+
+state 38
+
+    (5) expression -> TransitiveObjectProperty LPAREN ID RPAREN .
+
+    RPAREN          reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    Declaration     reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    Class           reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    ObjectProperty  reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    FunctionalObjectProperty reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    TransitiveObjectProperty reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    EquivalentClasses reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    SubObjectPropertyOf reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    ObjectIntersectionOf reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    SubClassOf      reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    ID              reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+    $end            reduce using rule 5 (expression -> TransitiveObjectProperty LPAREN ID RPAREN .)
+
+
+state 39
+
+    (3) expression -> ObjectProperty LPAREN ID RPAREN .
+
+    RPAREN          reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    Declaration     reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    Class           reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    ObjectProperty  reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    FunctionalObjectProperty reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    TransitiveObjectProperty reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    EquivalentClasses reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    SubObjectPropertyOf reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    ObjectIntersectionOf reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    SubClassOf      reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    ID              reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+    $end            reduce using rule 3 (expression -> ObjectProperty LPAREN ID RPAREN .)
+
+
+state 40
+
+    (2) expression -> Class LPAREN ID RPAREN .
+
+    RPAREN          reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    Declaration     reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    Class           reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    ObjectProperty  reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    FunctionalObjectProperty reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    TransitiveObjectProperty reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    EquivalentClasses reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    SubObjectPropertyOf reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    ObjectIntersectionOf reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    SubClassOf      reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    ID              reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+    $end            reduce using rule 2 (expression -> Class LPAREN ID RPAREN .)
+
+
+state 41
+
+    (4) expression -> FunctionalObjectProperty LPAREN ID RPAREN .
+
+    RPAREN          reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    Declaration     reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    Class           reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    ObjectProperty  reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    FunctionalObjectProperty reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    TransitiveObjectProperty reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    EquivalentClasses reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    SubObjectPropertyOf reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    ObjectIntersectionOf reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    SubClassOf      reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    ID              reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+    $end            reduce using rule 4 (expression -> FunctionalObjectProperty LPAREN ID RPAREN .)
+
+
+state 42
+
+    (1) expression -> Declaration LPAREN expression RPAREN .
+
+    RPAREN          reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    Declaration     reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    Class           reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    ObjectProperty  reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    FunctionalObjectProperty reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    TransitiveObjectProperty reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    EquivalentClasses reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    SubObjectPropertyOf reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    ObjectIntersectionOf reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    SubClassOf      reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    ID              reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+    $end            reduce using rule 1 (expression -> Declaration LPAREN expression RPAREN .)
+
+
+state 43
+
+    (9) expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .
+
+    RPAREN          reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    Declaration     reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    Class           reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    ObjectProperty  reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    FunctionalObjectProperty reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    TransitiveObjectProperty reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    EquivalentClasses reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    SubObjectPropertyOf reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    ObjectIntersectionOf reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    SubClassOf      reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    ID              reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+    $end            reduce using rule 9 (expression -> ObjectSomeValuesFrom LPAREN expression expression RPAREN .)
+
+
+state 44
+
+    (6) expression -> EquivalentClasses LPAREN expression expression RPAREN .
+
+    RPAREN          reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    Declaration     reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    Class           reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    ObjectProperty  reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    FunctionalObjectProperty reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    TransitiveObjectProperty reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    EquivalentClasses reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    SubObjectPropertyOf reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    ObjectIntersectionOf reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    SubClassOf      reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    ID              reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+    $end            reduce using rule 6 (expression -> EquivalentClasses LPAREN expression expression RPAREN .)
+
+
+state 45
+
+    (10) expression -> SubClassOf LPAREN expression expression RPAREN .
+
+    RPAREN          reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    Declaration     reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    Class           reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    ObjectProperty  reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    FunctionalObjectProperty reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    TransitiveObjectProperty reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    EquivalentClasses reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    SubObjectPropertyOf reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    ObjectIntersectionOf reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    SubClassOf      reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    ID              reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+    $end            reduce using rule 10 (expression -> SubClassOf LPAREN expression expression RPAREN .)
+
+
+state 46
+
+    (8) expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .
+
+    RPAREN          reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    Declaration     reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    Class           reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    ObjectProperty  reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    FunctionalObjectProperty reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    TransitiveObjectProperty reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    EquivalentClasses reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    SubObjectPropertyOf reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    ObjectIntersectionOf reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    SubClassOf      reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    ID              reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+    $end            reduce using rule 8 (expression -> ObjectIntersectionOf LPAREN expression expression RPAREN .)
+
+
+state 47
+
+    (7) expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .
+
+    RPAREN          reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    Declaration     reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    Class           reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    ObjectProperty  reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    FunctionalObjectProperty reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    TransitiveObjectProperty reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    EquivalentClasses reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    SubObjectPropertyOf reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    ObjectIntersectionOf reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    ObjectSomeValuesFrom reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    SubClassOf      reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    ID              reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+    $end            reduce using rule 7 (expression -> SubObjectPropertyOf LPAREN expression expression RPAREN .)
+

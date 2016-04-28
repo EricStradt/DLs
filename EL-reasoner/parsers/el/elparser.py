@@ -12,7 +12,7 @@ Examples :
 Usage :
 @code
     from elparser import EL_PARSER
-    parsed = EL_PARSER.parse('EXISTS(r, EXISTS(s, C1)) INTER C2 INTER EXISTS(s, C3) IN C5\n')
+    parsed = EL_PARSER.parse('MentalProcess INTER EXISTS hasIntrinsicAbnormalityStatus nonNormal IN ZC2925\n')
     print(parsed)
 @endcode
 
@@ -26,9 +26,9 @@ this webpage : http://www.dabeaz.com/ply/ply.html#ply_nn23
 import ply.yacc as yacc
 
 try:
-    from ellexer import tokens
+    from ellexer import tokens, EL_LEXER
 except ImportError as e:
-    from parsers.ellexer import tokens
+    from parsers.el.ellexer import tokens, EL_LEXER
 
 
 def reverse_parser(l):
@@ -61,7 +61,6 @@ def p_expression_rin(p):
     'expression : rc RIN rc'
     p[0] = ["RIN", p[1], p[3]]
 
-
 def p_role_rcomp(p):
     'rc : rc RCOMP rc'
     p[0] = ["RCOMP", p[1], p[3]]
@@ -69,6 +68,10 @@ def p_role_rcomp(p):
 def p_concept_inter(p):
     'rc : rc INTER rc'
     p[0] = ["INTER", p[1], p[3]]
+
+def p_concept_exists(p):
+    'rc : EXISTS ID rc'
+    p[0] = ["EXISTS", p[2], p[3]]
 
 def p_rc_id(p):
     'rc : ID'
@@ -81,21 +84,20 @@ def p_rc_bottom(p):
 def p_rc_top(p):
     'rc : TOP'
     p[0] = p[1]
+#
+# def p_rc_paren(p):
+#     'rc : LPAREN rc RPAREN'
+#     p[0] = p[2]
 
-def p_rc_paren(p):
-    'rc : LPAREN rc RPAREN'
-    p[0] = p[2]
 
-def p_concept_exists(p):
-    'rc : EXISTS ID rc'
-    p[0] = ["EXISTS", p[2], p[3]]
-
-def p_concept_exists2(p):
-    'rc : EXISTS LPAREN ID VIRG rc RPAREN'
-    p[0] = ["EXISTS", p[3], p[5]]
+# def p_concept_exists2(p):
+#     'rc : EXISTS LPAREN ID VIRG rc RPAREN'
+#     p[0] = ["EXISTS", p[3], p[5]]
 
 
 def p_error(p):
+    # print(p.parser)          # Show parser object
+    print(p.lexer)
     if p is not None:
         print("Syntax error in input : %s on line %i, character %i" % (p.__str__(), p.lineno, p.lexpos))
     else:
@@ -106,5 +108,11 @@ EL_PARSER = yacc.yacc()
 
 if __name__ == "__main__":
     # TODO add proper tests
-    result = EL_PARSER.parse('EXISTS(r, EXISTS(s, C1)) INTER C2 INTER EXISTS(s, C3) IN C5\n')
-    print(result)
+    tests = [
+        "MentalProcess INTER EXISTS hasIntrinsicAbnormalityStatus nonNormal IN ZC2925",
+        "CardiacPathology INTER EXISTS hasCause Hypertension IN HypertensiveCardiacPathology"
+    ]
+    for t in tests:
+        print(EL_PARSER.parse(t, lexer=EL_LEXER))
+    # result = EL_PARSER.parse('\n')
+    # print(result)

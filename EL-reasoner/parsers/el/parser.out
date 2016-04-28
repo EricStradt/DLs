@@ -1,0 +1,363 @@
+Created by PLY version 3.7 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    VIRG
+    LPAREN
+    RPAREN
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> rc IN NOT rc
+Rule 2     expression -> rc IN rc
+Rule 3     expression -> rc EQUIV rc
+Rule 4     expression -> rc RIN rc
+Rule 5     rc -> rc RCOMP rc
+Rule 6     rc -> rc INTER rc
+Rule 7     rc -> EXISTS ID rc
+Rule 8     rc -> ID
+Rule 9     rc -> BOTTOM
+Rule 10    rc -> TOP
+
+Terminals, with rules where they appear
+
+BOTTOM               : 9
+EQUIV                : 3
+EXISTS               : 7
+ID                   : 7 8
+IN                   : 1 2
+INTER                : 6
+LPAREN               : 
+NOT                  : 1
+RCOMP                : 5
+RIN                  : 4
+RPAREN               : 
+TOP                  : 10
+VIRG                 : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 0
+rc                   : 1 1 2 2 3 3 4 4 5 5 6 6 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . rc IN NOT rc
+    (2) expression -> . rc IN rc
+    (3) expression -> . rc EQUIV rc
+    (4) expression -> . rc RIN rc
+    (5) rc -> . rc RCOMP rc
+    (6) rc -> . rc INTER rc
+    (7) rc -> . EXISTS ID rc
+    (8) rc -> . ID
+    (9) rc -> . BOTTOM
+    (10) rc -> . TOP
+
+    EXISTS          shift and go to state 5
+    ID              shift and go to state 2
+    BOTTOM          shift and go to state 1
+    TOP             shift and go to state 4
+
+    expression                     shift and go to state 3
+    rc                             shift and go to state 6
+
+state 1
+
+    (9) rc -> BOTTOM .
+
+    RCOMP           reduce using rule 9 (rc -> BOTTOM .)
+    INTER           reduce using rule 9 (rc -> BOTTOM .)
+    $end            reduce using rule 9 (rc -> BOTTOM .)
+    IN              reduce using rule 9 (rc -> BOTTOM .)
+    EQUIV           reduce using rule 9 (rc -> BOTTOM .)
+    RIN             reduce using rule 9 (rc -> BOTTOM .)
+
+
+state 2
+
+    (8) rc -> ID .
+
+    RCOMP           reduce using rule 8 (rc -> ID .)
+    INTER           reduce using rule 8 (rc -> ID .)
+    $end            reduce using rule 8 (rc -> ID .)
+    IN              reduce using rule 8 (rc -> ID .)
+    EQUIV           reduce using rule 8 (rc -> ID .)
+    RIN             reduce using rule 8 (rc -> ID .)
+
+
+state 3
+
+    (0) S' -> expression .
+
+
+
+state 4
+
+    (10) rc -> TOP .
+
+    RCOMP           reduce using rule 10 (rc -> TOP .)
+    INTER           reduce using rule 10 (rc -> TOP .)
+    $end            reduce using rule 10 (rc -> TOP .)
+    IN              reduce using rule 10 (rc -> TOP .)
+    EQUIV           reduce using rule 10 (rc -> TOP .)
+    RIN             reduce using rule 10 (rc -> TOP .)
+
+
+state 5
+
+    (7) rc -> EXISTS . ID rc
+
+    ID              shift and go to state 7
+
+
+state 6
+
+    (1) expression -> rc . IN NOT rc
+    (2) expression -> rc . IN rc
+    (3) expression -> rc . EQUIV rc
+    (4) expression -> rc . RIN rc
+    (5) rc -> rc . RCOMP rc
+    (6) rc -> rc . INTER rc
+
+    IN              shift and go to state 11
+    EQUIV           shift and go to state 9
+    RIN             shift and go to state 8
+    RCOMP           shift and go to state 10
+    INTER           shift and go to state 12
+
+
+state 7
+
+    (7) rc -> EXISTS ID . rc
+    (5) rc -> . rc RCOMP rc
+    (6) rc -> . rc INTER rc
+    (7) rc -> . EXISTS ID rc
+    (8) rc -> . ID
+    (9) rc -> . BOTTOM
+    (10) rc -> . TOP
+
+    EXISTS          shift and go to state 5
+    ID              shift and go to state 2
+    BOTTOM          shift and go to state 1
+    TOP             shift and go to state 4
+
+    rc                             shift and go to state 13
+
+state 8
+
+    (4) expression -> rc RIN . rc
+    (5) rc -> . rc RCOMP rc
+    (6) rc -> . rc INTER rc
+    (7) rc -> . EXISTS ID rc
+    (8) rc -> . ID
+    (9) rc -> . BOTTOM
+    (10) rc -> . TOP
+
+    EXISTS          shift and go to state 5
+    ID              shift and go to state 2
+    BOTTOM          shift and go to state 1
+    TOP             shift and go to state 4
+
+    rc                             shift and go to state 14
+
+state 9
+
+    (3) expression -> rc EQUIV . rc
+    (5) rc -> . rc RCOMP rc
+    (6) rc -> . rc INTER rc
+    (7) rc -> . EXISTS ID rc
+    (8) rc -> . ID
+    (9) rc -> . BOTTOM
+    (10) rc -> . TOP
+
+    EXISTS          shift and go to state 5
+    ID              shift and go to state 2
+    BOTTOM          shift and go to state 1
+    TOP             shift and go to state 4
+
+    rc                             shift and go to state 15
+
+state 10
+
+    (5) rc -> rc RCOMP . rc
+    (5) rc -> . rc RCOMP rc
+    (6) rc -> . rc INTER rc
+    (7) rc -> . EXISTS ID rc
+    (8) rc -> . ID
+    (9) rc -> . BOTTOM
+    (10) rc -> . TOP
+
+    EXISTS          shift and go to state 5
+    ID              shift and go to state 2
+    BOTTOM          shift and go to state 1
+    TOP             shift and go to state 4
+
+    rc                             shift and go to state 16
+
+state 11
+
+    (1) expression -> rc IN . NOT rc
+    (2) expression -> rc IN . rc
+    (5) rc -> . rc RCOMP rc
+    (6) rc -> . rc INTER rc
+    (7) rc -> . EXISTS ID rc
+    (8) rc -> . ID
+    (9) rc -> . BOTTOM
+    (10) rc -> . TOP
+
+    NOT             shift and go to state 18
+    EXISTS          shift and go to state 5
+    ID              shift and go to state 2
+    BOTTOM          shift and go to state 1
+    TOP             shift and go to state 4
+
+    rc                             shift and go to state 17
+
+state 12
+
+    (6) rc -> rc INTER . rc
+    (5) rc -> . rc RCOMP rc
+    (6) rc -> . rc INTER rc
+    (7) rc -> . EXISTS ID rc
+    (8) rc -> . ID
+    (9) rc -> . BOTTOM
+    (10) rc -> . TOP
+
+    EXISTS          shift and go to state 5
+    ID              shift and go to state 2
+    BOTTOM          shift and go to state 1
+    TOP             shift and go to state 4
+
+    rc                             shift and go to state 19
+
+state 13
+
+    (7) rc -> EXISTS ID rc .
+    (5) rc -> rc . RCOMP rc
+    (6) rc -> rc . INTER rc
+
+  ! shift/reduce conflict for RCOMP resolved as shift
+  ! shift/reduce conflict for INTER resolved as shift
+    $end            reduce using rule 7 (rc -> EXISTS ID rc .)
+    IN              reduce using rule 7 (rc -> EXISTS ID rc .)
+    EQUIV           reduce using rule 7 (rc -> EXISTS ID rc .)
+    RIN             reduce using rule 7 (rc -> EXISTS ID rc .)
+    RCOMP           shift and go to state 10
+    INTER           shift and go to state 12
+
+  ! RCOMP           [ reduce using rule 7 (rc -> EXISTS ID rc .) ]
+  ! INTER           [ reduce using rule 7 (rc -> EXISTS ID rc .) ]
+
+
+state 14
+
+    (4) expression -> rc RIN rc .
+    (5) rc -> rc . RCOMP rc
+    (6) rc -> rc . INTER rc
+
+    $end            reduce using rule 4 (expression -> rc RIN rc .)
+    RCOMP           shift and go to state 10
+    INTER           shift and go to state 12
+
+
+state 15
+
+    (3) expression -> rc EQUIV rc .
+    (5) rc -> rc . RCOMP rc
+    (6) rc -> rc . INTER rc
+
+    $end            reduce using rule 3 (expression -> rc EQUIV rc .)
+    RCOMP           shift and go to state 10
+    INTER           shift and go to state 12
+
+
+state 16
+
+    (5) rc -> rc RCOMP rc .
+    (5) rc -> rc . RCOMP rc
+    (6) rc -> rc . INTER rc
+
+  ! shift/reduce conflict for RCOMP resolved as shift
+  ! shift/reduce conflict for INTER resolved as shift
+    $end            reduce using rule 5 (rc -> rc RCOMP rc .)
+    IN              reduce using rule 5 (rc -> rc RCOMP rc .)
+    EQUIV           reduce using rule 5 (rc -> rc RCOMP rc .)
+    RIN             reduce using rule 5 (rc -> rc RCOMP rc .)
+    RCOMP           shift and go to state 10
+    INTER           shift and go to state 12
+
+  ! RCOMP           [ reduce using rule 5 (rc -> rc RCOMP rc .) ]
+  ! INTER           [ reduce using rule 5 (rc -> rc RCOMP rc .) ]
+
+
+state 17
+
+    (2) expression -> rc IN rc .
+    (5) rc -> rc . RCOMP rc
+    (6) rc -> rc . INTER rc
+
+    $end            reduce using rule 2 (expression -> rc IN rc .)
+    RCOMP           shift and go to state 10
+    INTER           shift and go to state 12
+
+
+state 18
+
+    (1) expression -> rc IN NOT . rc
+    (5) rc -> . rc RCOMP rc
+    (6) rc -> . rc INTER rc
+    (7) rc -> . EXISTS ID rc
+    (8) rc -> . ID
+    (9) rc -> . BOTTOM
+    (10) rc -> . TOP
+
+    EXISTS          shift and go to state 5
+    ID              shift and go to state 2
+    BOTTOM          shift and go to state 1
+    TOP             shift and go to state 4
+
+    rc                             shift and go to state 20
+
+state 19
+
+    (6) rc -> rc INTER rc .
+    (5) rc -> rc . RCOMP rc
+    (6) rc -> rc . INTER rc
+
+  ! shift/reduce conflict for RCOMP resolved as shift
+  ! shift/reduce conflict for INTER resolved as shift
+    $end            reduce using rule 6 (rc -> rc INTER rc .)
+    IN              reduce using rule 6 (rc -> rc INTER rc .)
+    EQUIV           reduce using rule 6 (rc -> rc INTER rc .)
+    RIN             reduce using rule 6 (rc -> rc INTER rc .)
+    RCOMP           shift and go to state 10
+    INTER           shift and go to state 12
+
+  ! RCOMP           [ reduce using rule 6 (rc -> rc INTER rc .) ]
+  ! INTER           [ reduce using rule 6 (rc -> rc INTER rc .) ]
+
+
+state 20
+
+    (1) expression -> rc IN NOT rc .
+    (5) rc -> rc . RCOMP rc
+    (6) rc -> rc . INTER rc
+
+    $end            reduce using rule 1 (expression -> rc IN NOT rc .)
+    RCOMP           shift and go to state 10
+    INTER           shift and go to state 12
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for RCOMP in state 13 resolved as shift
+WARNING: shift/reduce conflict for INTER in state 13 resolved as shift
+WARNING: shift/reduce conflict for RCOMP in state 16 resolved as shift
+WARNING: shift/reduce conflict for INTER in state 16 resolved as shift
+WARNING: shift/reduce conflict for RCOMP in state 19 resolved as shift
+WARNING: shift/reduce conflict for INTER in state 19 resolved as shift
