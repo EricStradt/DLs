@@ -5,7 +5,25 @@
 @brief Lexer for a small EL / EL+ syntax.
 
 This lexer accepts a small EL / EL+ syntax.
-It uses PLY.
+
+It recognizes the following reserved words :
+- IN : concept inclusion
+- INTER : concept intersection
+- EXISTS : existential restriction
+- RIN : role inclusion
+- RCOMP : role composition
+- EQUIV : concept equivalence
+- TOP : Entire domain
+- BOTTOM : Empty set
+- NOT : negation
+
+All other words can be used as concept or role names.
+The special character "#" can be used for comments.
+
+The code of this file is a simple use of PLY which was initially inspired by
+this webpage : http://www.dabeaz.com/ply/ply.html#ply_nn23
+
+@see elparser.py
 
 """
 
@@ -68,6 +86,7 @@ def t_eof(t):
 lexer = lex.lex()
 
 if __name__ == "__main__":
+    # TODO add proper tests
     # testing
     lexer.input("((EXISTS r (EXISTS s C1)) INTER C2) IN C5")
     # any new call to .input() will cause the lexer to forget the previous...

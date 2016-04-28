@@ -1,15 +1,49 @@
-# ------------------------------------------------------------
-# elparser.py
-#
-# Parser for a small EL / EL+ syntax
-# code adapted from http://www.dabeaz.com/ply/ply.html#ply_nn23
-# ------------------------------------------------------------
+"""
+@file elparser.py
+@author André Schrottenloher
+@date April 2016
+@brief Parser for a small EL / EL+ syntax.
+
+This parser accepts a small EL / EL+ syntax. It parses it to an internal
+representation using tree-like nested python objects (lists).
+
+Examples :
+
+Usage :
+@code
+    from elparser import EL_PARSER
+    parsed = EL_PARSER.parse('EXISTS(r, EXISTS(s, C1)) INTER C2 INTER EXISTS(s, C3) IN C5\n')
+    print(parsed)
+@endcode
+
+The code of this file is a simple use of PLY which was initially inspired by
+this webpage : http://www.dabeaz.com/ply/ply.html#ply_nn23
+
+@see ellexer.py
+
+"""
 
 import ply.yacc as yacc
 
-from ellexer import tokens
+try:
+    from ellexer import tokens
+except ImportError as e:
+    from parsers.ellexer import tokens
 
-# ------------------------------------------------------------
+
+def reverse_parser(l):
+    """
+    Reverses the parser.
+    """
+    if type(l) == str:
+        return l
+    elif type(l) == list:
+        if l[0] == "EXISTS":
+            return "EXISTS " + reverse_parser(l[1]) + " " + reverse_parser(l[2])
+        else:
+            return reverse_parser(l[1]) + " " + l[0] + " " + reverse_parser(l[2])
+    else:
+        return ""
 
 def p_concept_neg(p):
     'expression : rc IN NOT rc'
@@ -71,5 +105,6 @@ def p_error(p):
 EL_PARSER = yacc.yacc()
 
 if __name__ == "__main__":
+    # TODO add proper tests
     result = EL_PARSER.parse('EXISTS(r, EXISTS(s, C1)) INTER C2 INTER EXISTS(s, C3) IN C5\n')
     print(result)

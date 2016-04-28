@@ -1,9 +1,24 @@
-# ------------------------------------------------------------
-# ellexer.py
-#
-# Lexer for a small EL / EL+ syntax
-# code adapted from http://www.dabeaz.com/ply/ply.html#ply_nn23
-# ------------------------------------------------------------
+"""
+@file owllexer.py
+@author André Schrottenloher
+@date April 2016
+@brief Lexer for OWL functional syntax.
+
+This lexer recognizes GCIs and RIs expressed in OWL functional syntax. It is
+intended to be an interface with an internal EL/EL+ representation.
+
+Currently, the lexer does not recognize the following :
+- declarations : Declaration(Class(:AccelerationValue))
+- prefixes : Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+- ontology name : Ontology(<http://www.co-ode.org/ontologies/galen>)
+
+@see owlparser.py
+
+The code of this file is a simple use of PLY which was initially inspired by
+this webpage : http://www.dabeaz.com/ply/ply.html#ply_nn23
+
+"""
+
 import ply.lex as lex
 
 tokens = [
@@ -19,7 +34,10 @@ reserved = [
     'ObjectSomeValuesFrom',
     'FunctionalObjectProperty',
     'TransitiveObjectProperty',
-    'SubClassOf'
+    'SubClassOf',
+    'Declaration',
+    'Class',
+    'ObjectProperty'
 ]
 
 tokens = tokens + reserved

@@ -1,10 +1,15 @@
-# ------------------------------------------------------------
-# elnormalizer.py
-#
-# Normalizer for El / EL+
-# ------------------------------------------------------------
+"""
+@file elnormalizer.py
+@author André Schrottenloher
+@date April 2016
+@brief Normalizer for EL/EL+
 
-from elparser import EL_PARSER
+This file provides functions to handle EL/EL+ ontologies normalization.
+
+The normalization process reduces all GCIs / RIs to simple ones.
+
+"""
+
 
 INC_CAR = ","
 EXST_CAR = "."
@@ -95,7 +100,7 @@ def simplify(l, new_concept_name, new_role_name):
     return True, [ l ]
 
 
-def simplify_closure(line, count):
+def _simplify_closure(line, count):
     simpl = []
     lines = [line]
     while lines != []:
@@ -112,45 +117,19 @@ def simplify_closure(line, count):
 
 def normalize(lines):
     """
-    Normalizes but still does not write horn clauses. Returns all GCIs / RIs (separates both)
+    Normalizes a set of (parsed) lines.
     """
     count = 1
     for line in lines:
-        count, l = simplify_closure(line, count)
+        count, l = _simplify_closure(line, count)
         for newline in l:
             yield newline
 
 
-# ---------------------------------------------------
-# Reading / writing files
-# ---------------------------------------------------
-
-def _line_to_str(l):
-    if type(l) == str:
-        return l
-    elif type(l) == list:
-        return _line_to_str(l[1]) + " " + l[0] + " " + _line_to_str(l[2])
-    else:
-        return ""
-
-def read_from_file(filename):
-    with open(filename, 'r') as f:
-        for l in f:
-            if len(l) > 2 and "#" not in l:
-                tmp = EL_PARSER.parse(l)
-                if tmp is not None:
-                    yield tmp
-
-def write_to_file(filename, ls):
-    with open(filename, 'w') as f:
-        for l in ls:
-            f.write(_line_to_str(l) + "\n")
-
-def normalize_file(filename):
-    write_to_file(filename + ".normal", normalize(read_from_file(filename)))
-
 if __name__ == "__main__":
-    normalize_file("galen/galen.tex.el")
+    # TODO
+    pass
+    # normalize_file("galen/galen.tex.el")
     # o = list(read_from_file("test2.el"))
     # print(o)
     # res = normalize(o)
